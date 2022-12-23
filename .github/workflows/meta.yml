@@ -16,7 +16,7 @@ jobs:
       
     - name: npm install jinjia2-cli
       run: |
-       wget -N https://raw.githubusercontent.com/Websoft9/docker-library/main/template/variables.json -O template_variables.json
+       wget -N https://raw.githubusercontent.com/cloud-install/docker-library/main/template/variables.json -O template_variables.json
        pip install jinja2-cli
        
     - name: update all variables.json
