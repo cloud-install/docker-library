@@ -1,1 +1,35 @@
+name: Template README by variables.json
 
+on: 
+# repository_dispatch:
+  push:
+    branches: [ main ]
+    paths: 
+      - 'template/variables.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      name: Check out code  
+      
+    - name: npm install jinjia2-cli
+      run: |
+       wget -N https://raw.githubusercontent.com/Websoft9/docker-library/main/template/variables.json -O template_variables.json
+       pip install jinja2-cli
+       
+    - name: update all variables.json
+      run: |
+        files=$(ls apps/)
+        for file in $files;do
+            echo $file
+            cp -r apps/$file/variables.json  variables.json
+            jinja2 template_variables.json variables.json > apps/$file/variables.json
+          fi
+        done     
+       
+    - name: push variables.json  
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Templating variables.json
