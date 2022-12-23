@@ -2,11 +2,12 @@
   "name": "appname",
   "trademark": "AppName",
   "fork_url": "https://github.com/ONLYOFFICE/docker#recommended-system-requirements",
-  "version": "1.2.5",
+  "version": "latest",
+  "solution": "1",
   "requirements":{
     "cpu": "2",
     "memory": "4",
-    "disk": "20",
+    "bandwidth ": "100M",
     "url": "https://github.com/onlyoffice/docker#recommended-system-requirements"
   }
 }
